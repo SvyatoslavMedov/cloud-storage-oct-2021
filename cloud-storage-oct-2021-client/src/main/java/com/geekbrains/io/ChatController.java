@@ -1,4 +1,4 @@
-package com.geekbrains.io.io;
+package com.geekbrains.io;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -20,6 +20,8 @@ public class ChatController implements Initializable {
     private DataInputStream dis;
     private DataOutputStream dos;
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -32,8 +34,8 @@ public class ChatController implements Initializable {
                         String message = dis.readUTF();
                         Platform.runLater(() -> listView.getItems().add(message));
                     }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
             readThread.setDaemon(true);
